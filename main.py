@@ -12,6 +12,7 @@ def signal_handler(sig, frame):
     global stream_process
     if stream_process is not None and stream_process.poll() is None:
         stream_process.terminate()
+        stream_process.wait()
     sys.exit(0)
 
 @app.route('/start', methods=['GET'])
